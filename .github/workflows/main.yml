@@ -36,5 +36,5 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Build Docker image
         run: |
-          docker build -t romaromaroman1/ci-cd:${{ github.sha }} .
-          docker push romaromaroman1/ci-cd:${{ github.sha }}
+          docker build -t romandockerman/testworkflows:${{ github.sha }} .
+          docker push romandockerman/testworkflows:${{ github.sha }}
