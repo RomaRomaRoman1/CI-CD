@@ -30,7 +30,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Login to Docker registry
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin "https://hub.docker.com/repository/docker/romandockerman/testworkflows"
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Build Docker image
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ github.repository }}:${{ github.sha }} .
